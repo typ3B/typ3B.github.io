@@ -1,24 +1,28 @@
 <!DOCTYPE html>
-<html>
 
 <head>
-<title> Life of a Dev </title>
+<title> Started from the Bottom </title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
 
 <style>
 .button {
-  background-color: #8a8a5c;
-  border: none;
-  color: white;
+  background-color: transparent;
+  border: 4px solid #ffffff;
+  color: black;
   padding: 15px 32px;
-  text-align: center;
+  text-align: left;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
+  border-radius: 12px;
+  opacity: 0.8;
+  font-family: "Lucida Console", "Courier New", monospace;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 a {
@@ -29,7 +33,7 @@ a {
 }
 
 body {
-  background-image: url("wooden-hand2y.jpg");
+  background-image: url("img83.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100% 100%;
@@ -127,7 +131,6 @@ h1 {
 #giflist li {
   display: block;
   float: left;
-  padding-left: 600px;
   margin-right: 0px;
   margin-bottom: 0px;
 }
@@ -138,6 +141,55 @@ h1 {
  
 html[xmlns] .clearfix { display: block; }
 * html .clearfix { height: 1%; }
+
+/* Center child elements */
+body,
+.website-counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+body {
+  height: 80vh;
+}
+
+/* Styles for website counter container */
+.website-counter {
+  background-color: #f0f5f5;
+  height: 50px;
+  width: 80px;
+  color: black;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 25px;
+  margin-top: 10px;
+}
+
+/* Styles for reset button */
+#reset {
+  margin-top: 20px;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 8px 20px;
+  color: white;
+  border: 0;
+}
+
+/*faded*/
+@keyframes fade-inout{
+0%{ opacity: 1;}
+100%{ opacity: 0;}
+}
+.fade-in-fade-out{
+
+ animation: fade-inout 5s infinite alternate;
+ /* style the text */
+ font-size: 40px;
+ text-align: center;
+ }
 </style>
 
 </head>
@@ -151,6 +203,7 @@ html[xmlns] .clearfix { display: block; }
     </button>
     <div class="dropdown-content">
      <a href="#">email: anythingbutasic@gmail.com</a>
+     <a href="#">email: anythingbutasic@protonmail.com</a>
     </div>
   </div>
   
@@ -160,21 +213,16 @@ html[xmlns] .clearfix { display: block; }
     <div class="dropdown-content">
      
      <a href="#">
-     Amazon<br>
-     Amazon fulfillment associate<br>
-     01-2020/ 09-2021<br>
+     Mr.Insurance<br>
+     I.T. Technician<br>
+     November 2017 to Present
      </a>
      <a href="#">
-     On Target Staffing<br>
-     Machine Operator<br>
-     04-2019/ 12-2019<br>
+     ESG0 Advertisement LLC<br>
+     Lead Developer<br>
+     September 2021 to Present
      </a>
      
-     <a href="#">
-     Parker Foods<br>
-     Prep Cook<br>
-     03-2018/ 03-2019<br>
-     </a>
     </div>
   </div>
   
@@ -187,29 +235,36 @@ html[xmlns] .clearfix { display: block; }
       <a href="#">PHP</a>
       <a href="#">Linux</a>
       <a href="#">C/C++</a>
-    </div>
-  </div>
-  
-  <div class="dropdown">
-    <button class="dropbtn">Projects
-    </button>
-    <div class="dropdown-content">
-  <a href="Res-Project2.html">Project Page</a>
+      <a href="#">Javascript</a>
     </div>
   </div>
   
 </div>
 
 </h1>
+<br><br>
+<button class="button">
+ <div class="fade-in-fade-out"> Where is the future going??<br>
+"Where ever you want it to".<br>
+<br>
+    --Jasper 2020</div>
+</button>
+<br>
+<br>
+<br>
+  <div>Visitor:</div>
+    <div class="website-counter"></div>
+    <!--<button id="reset">Reset</button>-->
+</p>
 
 <br>
 
-  <div id="w">
+<!--  <div id="w">
     <div id="content">
         
         <ul id="giflist" class="clearfix">
-          <li><a href="chuckt.gif" target="_blank"><img src="blinkL.png" data-orig="blinkL.png" width="200" height="200"></a></li>
-          
+          <li><a href="chuckt.gif" target="_blank"><img src="blinkL.png" data-orig="blinkL.png" width="250" height="250"></a></li>
+-->          
 </div>
 
 </body>
@@ -224,6 +279,28 @@ $(function(){
     // on mouse leave
     $(this).attr('src',$(this).attr('data-orig'));
   });
+});
+</script>
+<script>
+var counterContainer = document.querySelector(".website-counter");
+var resetButton = document.querySelector("#reset");
+var visitCount = localStorage.getItem("page_view");
+
+// Check if page_view entry is present
+if (visitCount) {
+  visitCount = Number(visitCount) + 1;
+  localStorage.setItem("page_view", visitCount);
+} else {
+  visitCount = 1;
+  localStorage.setItem("page_view", 1);
+}
+counterContainer.innerHTML = visitCount;
+
+// Adding onClick event listener
+resetButton.addEventListener("click", () => {
+  visitCount = 1;
+  localStorage.setItem("page_view", 1);
+  counterContainer.innerHTML = visitCount;
 });
 </script>
 
